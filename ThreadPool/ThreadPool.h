@@ -31,7 +31,7 @@ class ThreadPool {
     deque<Job> jobQueue;
     
     //flag to indicate that we are done with the thread pool and signalling a wrap up
-    bool finished = false;
+    bool stopAccepting = false;
     
     //Thread arr used by the ctor
     thread threadARR[TP_MAX_THREADS];

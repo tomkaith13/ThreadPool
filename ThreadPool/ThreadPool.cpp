@@ -15,11 +15,11 @@ void ThreadPool::threadFunc() {
         { //scope of the conditional variable
             unique_lock<mutex> lck(mt);
             
-            //wait until jobQueue is filled or if finished is set to true
-            cv.wait(lck, [this]() -> bool { return this->jobQueue.size() || this->finished; });
+            //wait until jobQueue is filled or if stopAccepting is set to true
+            cv.wait(lck, [this]() -> bool { return this->jobQueue.size() || this->stopAccepting; });
             
-            //once finished is true, and the queue is empty, we exit the thread
-            if (this->finished && this->jobQueue.empty())
+            //once stopAccepting is true, and the queue is empty, we exit the thread
+            if (this->stopAccepting && this->jobQueue.empty())
                 return;
             
             currJob = std::move(jobQueue.front());
@@ -32,7 +32,7 @@ void ThreadPool::threadFunc() {
 
 ThreadPool::ThreadPool(int threadCount) {
     tCount = threadCount;
-    finished = false;
+    stopAccepting = false;
     
     for (int i = 0 ; i < tCount; i++) {
         threadARR[i] = thread(&ThreadPool::threadFunc, this);
@@ -58,7 +58,7 @@ ThreadPool::AddJob(Job j) {
 
 void ThreadPool::wrapUp() {
     
-    // locking and setting finished to true to signal a wrapup
+    // locking and setting stopAccepting to true to signal a wrapup
     unique_lock<mutex> lck(mt);
-    finished = true;
+    stopAccepting = true;
 }
