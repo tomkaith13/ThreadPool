@@ -50,6 +50,8 @@ void
 ThreadPool::AddJob(Job j) {
     { //scope for locking the queue mutex before pushing in a job
         unique_lock<mutex> guard(mt);
+        if (stopAccepting)
+            return;
         jobQueue.push_back(j);
     }
     //signal that a job has been entered to one of the threads
