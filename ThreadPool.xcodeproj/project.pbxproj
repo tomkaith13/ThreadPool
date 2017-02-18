@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		035BC3511E00B8F100410029 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 035BC3501E00B8F100410029 /* main.cpp */; };
 		03CE7E051E5784340040EF49 /* ThreadPool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03CE7E031E5784340040EF49 /* ThreadPool.cpp */; };
+		03CE7E071E57DF7A0040EF49 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 03CE7E061E57DF7A0040EF49 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,7 @@
 		035BC3501E00B8F100410029 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		03CE7E021E5783A10040EF49 /* ThreadPool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThreadPool.h; sourceTree = "<group>"; };
 		03CE7E031E5784340040EF49 /* ThreadPool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ThreadPool.cpp; sourceTree = "<group>"; };
+		03CE7E061E57DF7A0040EF49 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		035BC34F1E00B8F100410029 /* ThreadPool */ = {
 			isa = PBXGroup;
 			children = (
+				03CE7E061E57DF7A0040EF49 /* README.md */,
 				035BC3501E00B8F100410029 /* main.cpp */,
 				03CE7E031E5784340040EF49 /* ThreadPool.cpp */,
 				03CE7E021E5783A10040EF49 /* ThreadPool.h */,
@@ -124,6 +127,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03CE7E071E57DF7A0040EF49 /* README.md in Sources */,
 				035BC3511E00B8F100410029 /* main.cpp in Sources */,
 				03CE7E051E5784340040EF49 /* ThreadPool.cpp in Sources */,
 			);
