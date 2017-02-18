@@ -15,7 +15,12 @@ using namespace std;
 
 
 void* workLoad(void* arg) {
-    //int s = *(int*) arg;
+    struct threadArg {
+        int res;
+    };
+    
+    struct threadArg tArg = *(struct threadArg*)arg;
+    cout<<"id:"<<tArg.res<<endl;
     std::this_thread::sleep_for(std::chrono::seconds(1));
     return nullptr;
 }
@@ -26,9 +31,16 @@ int main(int argc, const char * argv[]) {
     std::cout << "Hello, World!\n";
     
     ThreadPool t(10);
+    struct threadArg {
+        int res;
+    };
     
-    for (int i = 0; i < 100; i++)
-       t.AddJob(Job(i, workLoad, &i));
+    threadArg tArg[100];
+
+    for (int i = 0; i < 100; i++) {
+        tArg[i].res = i;
+       t.AddJob(Job(i, workLoad, &tArg[i]));
+    }
 
     
     t.wrapUp();
