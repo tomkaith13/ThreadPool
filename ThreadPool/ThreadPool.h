@@ -15,34 +15,9 @@
 #include <thread>
 #include <mutex>
 #include <condition_variable>
+#include "Job.h"
 using namespace std;
 #define TP_MAX_THREADS 25
-
-/*
- *  This is the Job Class which is fed in the jobQueue of the ThreadPool
- *  Args: jobID, 
- *          a function pointer that points a function that accepts void*
- *          and return void*,
- *          Argument to the function above in void* pointer.
- */
-class Job {
-    int jId;
-    void* (*startRoutine) (void*);
-    void* fArg;
-    
-public:
-    Job() {};
-    Job(int id, void* (*startFP) (void*), void* arg) {
-        jId = id;
-        startRoutine = startFP;
-        fArg = arg;
-    }
-    void start() {
-        cout<<"Job id:"<<jId<<endl;
-        startRoutine(fArg);
-    }
-    const inline int getID() { return jId; }
-};
 
 
 

@@ -30,6 +30,7 @@
 		03CE7E021E5783A10040EF49 /* ThreadPool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThreadPool.h; sourceTree = "<group>"; };
 		03CE7E031E5784340040EF49 /* ThreadPool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ThreadPool.cpp; sourceTree = "<group>"; };
 		03CE7E061E57DF7A0040EF49 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		03CE7E091E58F25F0040EF49 /* Job.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Job.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +67,7 @@
 				035BC3501E00B8F100410029 /* main.cpp */,
 				03CE7E031E5784340040EF49 /* ThreadPool.cpp */,
 				03CE7E021E5783A10040EF49 /* ThreadPool.h */,
+				03CE7E091E58F25F0040EF49 /* Job.h */,
 			);
 			path = ThreadPool;
 			sourceTree = "<group>";
