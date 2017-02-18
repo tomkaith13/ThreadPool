@@ -17,21 +17,18 @@
  *          Argument to the function above in void* pointer.
  */
 class Job {
-    int jId;
     void* (*startRoutine) (void*);
     void* fArg;
     
 public:
     Job() {};
-    Job(int id, void* (*startFP) (void*), void* arg) {
-        jId = id;
+    Job(void* (*startFP) (void*), void* arg) {
         startRoutine = startFP;
         fArg = arg;
     }
     void start() {
         startRoutine(fArg);
     }
-    const inline int getID() { return jId; }
 };
 
 #endif /* Job_h */
