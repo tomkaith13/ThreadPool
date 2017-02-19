@@ -41,6 +41,6 @@ This will finish cause one of the threads to pick of the job submitted,
 finish it and await more submissions.
 
 
-THREADPOOL CLEANUP/WRAPUP:
+THREADPOOL STOP_RECEIVING:
 The final functionality of the threadpool, is if we are done accepting new jobs 
 and we are wrapping up the existing jobQueue entries

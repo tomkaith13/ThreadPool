@@ -47,7 +47,7 @@ public:
     void AddJob(Job);
     void* getResult(int jId);
     void threadFunc();
-    void wrapUp();
+    void stopReceivingJobs();
     const inline int getJobQLen() { unique_lock<mutex> lck(mt); return (int)jobQueue.size(); }
     ~ThreadPool();
     

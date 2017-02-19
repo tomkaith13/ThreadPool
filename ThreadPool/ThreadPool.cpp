@@ -41,6 +41,9 @@ ThreadPool::ThreadPool(int threadCount) {
 }
 
 ThreadPool::~ThreadPool() {
+    //stop receiving new jobs and empty the job Queue
+    stopReceivingJobs();
+    
     //join all threads spun
     for (int i =0; i <tCount; i++)
         threadARR[i].join();
@@ -58,7 +61,7 @@ ThreadPool::AddJob(Job j) {
     cv.notify_one();
 }
 
-void ThreadPool::wrapUp() {
+void ThreadPool::stopReceivingJobs() {
     
     // locking and setting stopAccepting to true to signal a wrapup
     unique_lock<mutex> lck(mt);

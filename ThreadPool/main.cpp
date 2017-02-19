@@ -43,7 +43,7 @@ int main(int argc, const char * argv[]) {
     }
 
     
-    t.wrapUp();
+    t.stopReceivingJobs();
     
     
     return 0;
