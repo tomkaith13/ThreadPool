@@ -35,12 +35,20 @@ Job j(1, taskFunc, nullptr);
 
 
 ADDING JOBS TO THREADPOOL:
+This function is a boolean and will return if job addition was a success
+or not.
 tp.addJob(j);
 
 This will finish cause one of the threads to pick of the job submitted,
 finish it and await more submissions.
 
 
-THREADPOOL STOP_RECEIVING:
+THREADPOOL STOP RECEIVING NEW JOBS:
 The final functionality of the threadpool, is if we are done accepting new jobs 
 and we are wrapping up the existing jobQueue entries
+tp.stopReceivingJobs()
+
+RESTART RECEIVING NEW JOBS:
+This will help with reuse of existing thread pool by allowing
+the job Queue to start accepting jobs again.
+tp.restartReceivingJobs()

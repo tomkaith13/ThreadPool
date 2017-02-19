@@ -31,7 +31,7 @@ class ThreadPool {
     deque<Job> jobQueue;
     
     //flag to indicate that we are done with the thread pool and signalling a wrap up
-    bool stopAccepting = false;
+    bool stopAccepting;
     
     //Thread arr used by the ctor
     thread threadARR[TP_MAX_THREADS];
@@ -44,9 +44,10 @@ class ThreadPool {
     
 public:
     ThreadPool(int tCount);
-    void AddJob(Job);
+    bool AddJob(Job);
     void* getResult(int jId);
     void threadFunc();
+    void restartReceivingJobs();
     void stopReceivingJobs();
     const inline int getJobQLen() { unique_lock<mutex> lck(mt); return (int)jobQueue.size(); }
     ~ThreadPool();

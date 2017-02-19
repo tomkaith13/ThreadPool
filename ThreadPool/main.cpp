@@ -39,12 +39,22 @@ int main(int argc, const char * argv[]) {
 
     for (int i = 0; i < 100; i++) {
         tArg[i].res = i;
-       t.AddJob(Job(workLoad, &tArg[i]));
+       (void) t.AddJob(Job(workLoad, &tArg[i]));
     }
 
-    
+    // used more for like congestion control of job submissions
     t.stopReceivingJobs();
     
+    //std::this_thread::sleep_for(std::chrono::seconds(4));
+    
+    // restart adding more jobs
+    t.restartReceivingJobs();
+    threadArg tArg2[100];
+    
+    for (int i = 0; i < 100; i++) {
+        tArg2[i].res = i+100;
+        (void) t.AddJob(Job(workLoad, &tArg2[i]));
+    }
     
     return 0;
 }

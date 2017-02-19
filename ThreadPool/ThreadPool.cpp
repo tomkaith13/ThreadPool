@@ -49,16 +49,17 @@ ThreadPool::~ThreadPool() {
         threadARR[i].join();
 }
 
-void
+bool
 ThreadPool::AddJob(Job j) {
     { //scope for locking the queue mutex before pushing in a job
         unique_lock<mutex> guard(mt);
         if (stopAccepting)
-            return;
+            return false;
         jobQueue.push_back(j);
     }
     //signal that a job has been entered to one of the threads
     cv.notify_one();
+    return true;
 }
 
 void ThreadPool::stopReceivingJobs() {
@@ -66,4 +67,11 @@ void ThreadPool::stopReceivingJobs() {
     // locking and setting stopAccepting to true to signal a wrapup
     unique_lock<mutex> lck(mt);
     stopAccepting = true;
+}
+
+void ThreadPool::restartReceivingJobs() {
+    
+    // locking and setting stopAccepting to false to signal a restart of job queueing
+    unique_lock<mutex> lck(mt);
+    stopAccepting = false;
 }
